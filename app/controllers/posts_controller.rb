@@ -1,8 +1,10 @@
 class PostsController < ApplicationController
+  before_action :find_post, only: [:show, :edit, :update, :destroy]
   def index
   end
 
   def show
+    @post = Post.find(params[:id])
   end
 
   def new
@@ -29,7 +31,9 @@ class PostsController < ApplicationController
   end
 
   private
+
   def find_post
+    @post = Post.find(params[:id])
   end
 
   def post_params
